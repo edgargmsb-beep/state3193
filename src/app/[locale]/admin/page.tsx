@@ -12,5 +12,8 @@ export default async function AdminPage({
   if (!session?.user) {
     redirect(`/${locale}/admin/login`);
   }
+  if (session.user.canManageWiki && !session.user.isSuperAdmin) {
+    redirect(`/${locale}/admin/wiki`);
+  }
   return <AdminPanel isSuperAdmin={session.user.isSuperAdmin} canManageWiki={session.user.canManageWiki} />;
 }

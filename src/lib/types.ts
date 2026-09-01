@@ -49,3 +49,42 @@ export type AuditLogEntry = {
   previousValues: AuditLogPreviousValues | null;
   createdAt: string;
 };
+
+export type WikiArticleSummary = {
+  id: string;
+  title: string;
+  updatedAt: string;
+};
+
+export type WikiCategory = {
+  id: string;
+  name: string;
+  order: number;
+  articles: WikiArticleSummary[];
+};
+
+export type WikiArticleFull = {
+  id: string;
+  categoryId: string;
+  title: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  category: { id: string; name: string };
+};
+
+export type WikiArticleAdmin = {
+  id: string;
+  categoryId: string;
+  title: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type WikiCategoryAdmin = {
+  id: string;
+  name: string;
+  order: number;
+  articles: WikiArticleAdmin[];
+};

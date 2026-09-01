@@ -9,7 +9,7 @@ export async function GET() {
   if (response) return response;
 
   const admins = await prisma.admin.findMany({
-    select: { id: true, username: true, isSuperAdmin: true, createdAt: true },
+    select: { id: true, username: true, isSuperAdmin: true, canManageWiki: true, createdAt: true },
     orderBy: { createdAt: "asc" },
   });
 
@@ -35,8 +35,8 @@ export async function POST(request: Request) {
 
   const passwordHash = await bcrypt.hash(parsed.data.password, 10);
   const admin = await prisma.admin.create({
-    data: { username: parsed.data.username, passwordHash },
-    select: { id: true, username: true, isSuperAdmin: true, createdAt: true },
+    data: { username: parsed.data.username, passwordHash, canManageWiki: parsed.data.canManageWiki },
+    select: { id: true, username: true, isSuperAdmin: true, canManageWiki: true, createdAt: true },
   });
 
   return NextResponse.json({ admin }, { status: 201 });

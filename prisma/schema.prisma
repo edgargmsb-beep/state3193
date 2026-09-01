@@ -50,7 +50,26 @@ model Admin {
   username      String   @unique
   passwordHash  String
   isSuperAdmin  Boolean  @default(false)
+  canManageWiki Boolean  @default(false)
   createdAt     DateTime @default(now())
+}
+
+model WikiCategory {
+  id        String        @id @default(cuid())
+  name      String
+  order     Int           @default(0)
+  createdAt DateTime      @default(now())
+  articles  WikiArticle[]
+}
+
+model WikiArticle {
+  id         String       @id @default(cuid())
+  categoryId String
+  category   WikiCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  title      String
+  content    String
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
 }
 
 model AuditLog {

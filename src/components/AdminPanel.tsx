@@ -1,8 +1,9 @@
 "use client";
 
-import { ClipboardCopy, Copy, LogOut, Pencil, RotateCcw, Trash2 } from "lucide-react";
+import { BookOpen, ClipboardCopy, Copy, LogOut, Pencil, RotateCcw, Trash2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
+import { Link } from "@/i18n/navigation";
 import { adminLogout } from "@/lib/actions";
 import {
   DAYS,
@@ -25,7 +26,13 @@ function todayIso(offsetDays = 0): string {
   return d.toISOString().slice(0, 10);
 }
 
-export function AdminPanel({ isSuperAdmin }: { isSuperAdmin: boolean }) {
+export function AdminPanel({
+  isSuperAdmin,
+  canManageWiki,
+}: {
+  isSuperAdmin: boolean;
+  canManageWiki: boolean;
+}) {
   const t = useTranslations("admin");
   const tDays = useTranslations("days");
   const locale = useLocale();
@@ -114,15 +121,26 @@ export function AdminPanel({ isSuperAdmin }: { isSuperAdmin: boolean }) {
       <PageHeader
         title={t("panelTitle")}
         actions={
-          <form action={() => adminLogout(locale)}>
-            <button
-              type="submit"
-              className="flex items-center gap-2 rounded-full border border-slate-700 px-4 py-1.5 text-sm text-slate-300 hover:border-red-600 hover:text-red-400"
-            >
-              <LogOut className="h-4 w-4" />
-              {t("logout")}
-            </button>
-          </form>
+          <>
+            {(isSuperAdmin || canManageWiki) && (
+              <Link
+                href="/admin/wiki"
+                className="flex items-center gap-2 rounded-full border border-slate-700 px-4 py-1.5 text-sm text-slate-300 hover:border-blue-600 hover:text-blue-400"
+              >
+                <BookOpen className="h-4 w-4" />
+                {t("manageWiki")}
+              </Link>
+            )}
+            <form action={() => adminLogout(locale)}>
+              <button
+                type="submit"
+                className="flex items-center gap-2 rounded-full border border-slate-700 px-4 py-1.5 text-sm text-slate-300 hover:border-red-600 hover:text-red-400"
+              >
+                <LogOut className="h-4 w-4" />
+                {t("logout")}
+              </button>
+            </form>
+          </>
         }
       />
 

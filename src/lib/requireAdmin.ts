@@ -19,3 +19,14 @@ export async function requireSuperAdmin() {
   }
   return { session, response: null };
 }
+
+export async function requireWikiEditor() {
+  const session = await auth();
+  if (!session?.user) {
+    return { session: null, response: NextResponse.json({ error: "unauthorized" }, { status: 401 }) };
+  }
+  if (!session.user.isSuperAdmin && !session.user.canManageWiki) {
+    return { session: null, response: NextResponse.json({ error: "forbidden" }, { status: 403 }) };
+  }
+  return { session, response: null };
+}

@@ -28,7 +28,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const valid = await bcrypt.compare(password, admin.passwordHash);
         if (!valid) return null;
 
-        return { id: admin.id, name: admin.username, isSuperAdmin: admin.isSuperAdmin };
+        return {
+          id: admin.id,
+          name: admin.username,
+          isSuperAdmin: admin.isSuperAdmin,
+          canManageWiki: admin.canManageWiki,
+        };
       },
     }),
   ],
@@ -37,6 +42,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (user) {
         token.id = user.id;
         token.isSuperAdmin = (user as { isSuperAdmin: boolean }).isSuperAdmin;
+        token.canManageWiki = (user as { canManageWiki: boolean }).canManageWiki;
       }
       return token;
     },
@@ -44,6 +50,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (session.user) {
         session.user.id = token.id as string;
         session.user.isSuperAdmin = token.isSuperAdmin as boolean;
+        session.user.canManageWiki = token.canManageWiki as boolean;
       }
       return session;
     },

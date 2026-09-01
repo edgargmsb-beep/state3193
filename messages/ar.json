@@ -11,8 +11,11 @@
     "es": "Español"
   },
   "nav": {
+    "home": "الرئيسية",
     "schedule": "الجدول",
+    "wiki": "الويكي",
     "howItWorks": "كيف يعمل",
+    "adminLink": "لوحة الإدارة",
     "subtitle": "Presidency Scheduler",
     "language": "اللغة",
     "state": "الولاية {number}",
@@ -26,6 +29,16 @@
     "TROOPS": "الجيوش"
   },
   "home": {
+    "welcomeTitle": "مرحبًا",
+    "welcomeSubtitle": "اختر ما تحتاجه.",
+    "scheduleCardTitle": "جدول الأدوار",
+    "scheduleCardDesc": "احجز موعدك في أيام SvS الثلاثة: البناء والبحث والجيوش.",
+    "wikiCardTitle": "ويكي اللعبة",
+    "wikiCardDesc": "نصائح وأدلة ومعلومات عن Whiteout Survival.",
+    "howItWorksCardTitle": "كيف يعمل",
+    "howItWorksCardDesc": "تعرف على قواعد الحجز قبل حجز موعد."
+  },
+  "schedule": {
     "title": "الجدول",
     "subtitle": "اختر يومًا واحجز موعدك.",
     "noEvent": "لا يوجد حدث نشط حاليًا. تواصل مع أحد المسؤولين.",
@@ -33,8 +46,7 @@
     "slotTaken": "محجوز",
     "unavailable": "غير متاح",
     "book": "حجز",
-    "oneSlotNote": "يمكن لكل لاعب حجز موعد واحد فقط في اليوم.",
-    "adminLink": "لوحة الإدارة"
+    "oneSlotNote": "يمكن لكل لاعب حجز موعد واحد فقط في اليوم."
   },
   "howItWorks": {
     "title": "كيف يعمل",
@@ -101,17 +113,20 @@
     "gameId": "المعرف",
     "playerName": "الاسم",
     "alliance": "التحالف",
-    "time": "الوقت"
+    "time": "الوقت",
+    "manageWiki": "إدارة الويكي"
   },
   "admins": {
     "title": "إدارة المسؤولين",
     "subtitle": "فقط كبار المسؤولين يمكنهم إضافة أو إزالة مسؤولين.",
     "usernameLabel": "اسم المستخدم",
     "passwordLabel": "كلمة المرور (8 أحرف على الأقل)",
+    "wikiEditorLabel": "يمكنه أيضًا إدارة الويكي",
     "addButton": "إضافة مسؤول",
     "delete": "إزالة",
     "deleteConfirm": "إزالة هذا المسؤول؟",
     "superAdminBadge": "مسؤول رئيسي",
+    "wikiEditorBadge": "محرر الويكي",
     "errors": {
       "invalid_input": "يرجى التحقق من الحقول المدخلة.",
       "username_taken": "يوجد بالفعل مسؤول بهذا الاسم.",
@@ -136,5 +151,43 @@
     "alliance": "التحالف",
     "changes": "ما الذي تغيّر",
     "empty": "لا توجد سجلات بعد."
+  },
+  "wiki": {
+    "title": "الويكي",
+    "subtitle": "نصائح وأدلة ومعلومات عن اللعبة.",
+    "categories": "الفئات",
+    "noCategories": "لا توجد فئات بعد.",
+    "noArticles": "لا توجد مقالات في هذه الفئة بعد.",
+    "readMore": "اقرأ المزيد",
+    "back": "العودة إلى الويكي",
+    "copy": "نسخ",
+    "copied": "تم النسخ!",
+    "updatedAt": "تم التحديث في {date}"
+  },
+  "wikiAdmin": {
+    "title": "إدارة الويكي",
+    "categoriesTitle": "الفئات",
+    "addCategory": "إضافة فئة",
+    "categoryNamePlaceholder": "اسم الفئة",
+    "deleteCategoryConfirm": "سيؤدي هذا إلى حذف الفئة وجميع المقالات بداخلها. هل تريد المتابعة؟",
+    "articlesTitle": "المقالات",
+    "addArticle": "إضافة مقالة",
+    "articleTitleLabel": "العنوان",
+    "articleContentLabel": "المحتوى (Markdown)",
+    "articleContentHint": "يدعم **غامق**، _مائل_، قوائم باستخدام \"- \"، # عناوين، و[روابط](url).",
+    "selectCategory": "الفئة",
+    "selectCategoryPlaceholder": "اختر فئة",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "deleteArticleConfirm": "حذف هذه المقالة؟",
+    "empty": "لا توجد مقالات بعد.",
+    "noCategorySelected": "أنشئ فئة أولاً.",
+    "errors": {
+      "invalid_input": "يرجى التحقق من الحقول المدخلة.",
+      "not_found": "هذه المقالة لم تعد موجودة.",
+      "generic": "حدث خطأ ما. حاول مرة أخرى."
+    }
   }
 }

@@ -8,6 +8,7 @@ type AdminUser = {
   id: string;
   username: string;
   isSuperAdmin: boolean;
+  canManageWiki: boolean;
   createdAt: string;
 };
 
@@ -17,6 +18,7 @@ export function AdminUsersManager() {
   const [admins, setAdmins] = useState<AdminUser[] | null>(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [canManageWiki, setCanManageWiki] = useState(false);
   const [errorKey, setErrorKey] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -39,7 +41,7 @@ export function AdminUsersManager() {
       const res = await fetch("/api/admin/admins", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, canManageWiki }),
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
@@ -48,6 +50,7 @@ export function AdminUsersManager() {
       }
       setUsername("");
       setPassword("");
+      setCanManageWiki(false);
       load();
     } finally {
       setSubmitting(false);
@@ -85,6 +88,11 @@ export function AdminUsersManager() {
                   {t("superAdminBadge")}
                 </span>
               )}
+              {admin.canManageWiki && (
+                <span className="rounded-full bg-emerald-600/20 px-2 py-0.5 text-xs text-emerald-400">
+                  {t("wikiEditorBadge")}
+                </span>
+              )}
             </span>
             <button
               onClick={() => handleDelete(admin.id)}
@@ -118,6 +126,14 @@ export function AdminUsersManager() {
             className="w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-sm text-slate-200 sm:w-auto"
           />
         </div>
+        <label className="flex items-center gap-2 text-sm text-slate-300">
+          <input
+            type="checkbox"
+            checked={canManageWiki}
+            onChange={(e) => setCanManageWiki(e.target.checked)}
+          />
+          {t("wikiEditorLabel")}
+        </label>
         <button
           type="submit"
           disabled={submitting}

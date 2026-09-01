@@ -11,8 +11,11 @@
     "es": "Español"
   },
   "nav": {
+    "home": "Главная",
     "schedule": "Расписание",
+    "wiki": "Вики",
     "howItWorks": "Как это работает",
+    "adminLink": "Панель администратора",
     "subtitle": "Presidency Scheduler",
     "language": "Язык",
     "state": "Штат {number}",
@@ -26,6 +29,16 @@
     "TROOPS": "Войска"
   },
   "home": {
+    "welcomeTitle": "Добро пожаловать",
+    "welcomeSubtitle": "Выберите, что вам нужно.",
+    "scheduleCardTitle": "Расписание ролей",
+    "scheduleCardDesc": "Забронируйте слот в 3 дня SvS: Строительство, Исследования и Войска.",
+    "wikiCardTitle": "Вики игры",
+    "wikiCardDesc": "Советы, гайды и информация о Whiteout Survival.",
+    "howItWorksCardTitle": "Как это работает",
+    "howItWorksCardDesc": "Ознакомьтесь с правилами бронирования перед тем, как забронировать слот."
+  },
+  "schedule": {
     "title": "Расписание",
     "subtitle": "Выберите день и забронируйте слот.",
     "noEvent": "Сейчас нет активного события. Обратитесь к администратору.",
@@ -33,8 +46,7 @@
     "slotTaken": "Забронировано",
     "unavailable": "Недоступно",
     "book": "Забронировать",
-    "oneSlotNote": "Каждый игрок может забронировать только один слот в день.",
-    "adminLink": "Панель администратора"
+    "oneSlotNote": "Каждый игрок может забронировать только один слот в день."
   },
   "howItWorks": {
     "title": "Как это работает",
@@ -101,17 +113,20 @@
     "gameId": "ID",
     "playerName": "Имя",
     "alliance": "Альянс",
-    "time": "Время"
+    "time": "Время",
+    "manageWiki": "Управление Вики"
   },
   "admins": {
     "title": "Управление администраторами",
     "subtitle": "Только супер-администраторы могут добавлять или удалять администраторов.",
     "usernameLabel": "Логин",
     "passwordLabel": "Пароль (мин. 8 символов)",
+    "wikiEditorLabel": "Может также управлять Вики",
     "addButton": "Добавить администратора",
     "delete": "Удалить",
     "deleteConfirm": "Удалить этого администратора?",
     "superAdminBadge": "Супер-админ",
+    "wikiEditorBadge": "Редактор Вики",
     "errors": {
       "invalid_input": "Проверьте заполненные поля.",
       "username_taken": "Администратор с таким логином уже существует.",
@@ -136,5 +151,43 @@
     "alliance": "Альянс",
     "changes": "Что изменилось",
     "empty": "Записей пока нет."
+  },
+  "wiki": {
+    "title": "Вики",
+    "subtitle": "Советы, гайды и информация об игре.",
+    "categories": "Категории",
+    "noCategories": "Пока нет категорий.",
+    "noArticles": "В этой категории пока нет статей.",
+    "readMore": "Читать дальше",
+    "back": "Назад в Вики",
+    "copy": "Копировать",
+    "copied": "Скопировано!",
+    "updatedAt": "Обновлено {date}"
+  },
+  "wikiAdmin": {
+    "title": "Управление Вики",
+    "categoriesTitle": "Категории",
+    "addCategory": "Добавить категорию",
+    "categoryNamePlaceholder": "Название категории",
+    "deleteCategoryConfirm": "Это удалит категорию и все статьи внутри неё. Продолжить?",
+    "articlesTitle": "Статьи",
+    "addArticle": "Добавить статью",
+    "articleTitleLabel": "Заголовок",
+    "articleContentLabel": "Содержание (Markdown)",
+    "articleContentHint": "Поддерживает **жирный**, _курсив_, списки с \"- \", # заголовки и [ссылки](url).",
+    "selectCategory": "Категория",
+    "selectCategoryPlaceholder": "Выберите категорию",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "edit": "Изменить",
+    "delete": "Удалить",
+    "deleteArticleConfirm": "Удалить эту статью?",
+    "empty": "Пока нет статей.",
+    "noCategorySelected": "Сначала создайте категорию.",
+    "errors": {
+      "invalid_input": "Проверьте заполненные поля.",
+      "not_found": "Эта статья больше не существует.",
+      "generic": "Что-то пошло не так. Попробуйте снова."
+    }
   }
 }

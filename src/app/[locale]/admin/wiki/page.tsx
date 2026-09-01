@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
-import { AdminPanel } from "@/components/AdminPanel";
+import { WikiAdminPanel } from "@/components/WikiAdminPanel";
 
-export default async function AdminPage({
+export default async function AdminWikiPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -12,5 +12,8 @@ export default async function AdminPage({
   if (!session?.user) {
     redirect(`/${locale}/admin/login`);
   }
-  return <AdminPanel isSuperAdmin={session.user.isSuperAdmin} canManageWiki={session.user.canManageWiki} />;
+  if (!session.user.isSuperAdmin && !session.user.canManageWiki) {
+    redirect(`/${locale}/admin`);
+  }
+  return <WikiAdminPanel />;
 }

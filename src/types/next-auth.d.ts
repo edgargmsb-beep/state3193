@@ -5,6 +5,7 @@ declare module "next-auth" {
     user: {
       id: string;
       isSuperAdmin: boolean;
+      canManageWiki: boolean;
     } & DefaultSession["user"];
   }
 }

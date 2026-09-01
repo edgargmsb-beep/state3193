@@ -23,7 +23,7 @@ import { AdminLinkButton } from "@/components/AdminLinkButton";
 type TimeMode = "utc" | "local";
 
 export function BookingGrid() {
-  const t = useTranslations("home");
+  const t = useTranslations("schedule");
   const tDays = useTranslations("days");
   const locale = useLocale();
 
@@ -154,7 +154,7 @@ function SlotList({
   timeMode: TimeMode;
   locale: string;
 }) {
-  const t = useTranslations("home");
+  const t = useTranslations("schedule");
   const bySlot = new Map(bookings.map((b) => [b.slot, b]));
 
   return (

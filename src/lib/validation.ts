@@ -55,6 +55,21 @@ export const createAdminInputSchema = z.object({
     .max(30)
     .regex(/^[a-zA-Z0-9_.-]+$/, "invalid_input"),
   password: z.string().min(8).max(100),
+  canManageWiki: z.boolean().optional().default(false),
 });
 
 export type CreateAdminInput = z.infer<typeof createAdminInputSchema>;
+
+export const wikiCategoryInputSchema = z.object({
+  name: z.string().trim().min(1).max(60),
+});
+
+export type WikiCategoryInput = z.infer<typeof wikiCategoryInputSchema>;
+
+export const wikiArticleInputSchema = z.object({
+  categoryId: z.string().trim().min(1),
+  title: z.string().trim().min(1).max(120),
+  content: z.string().trim().min(1).max(20000),
+});
+
+export type WikiArticleInput = z.infer<typeof wikiArticleInputSchema>;

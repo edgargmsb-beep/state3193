@@ -11,8 +11,11 @@
     "es": "Español"
   },
   "nav": {
+    "home": "Home",
     "schedule": "Schedule",
+    "wiki": "Wiki",
     "howItWorks": "How it works",
+    "adminLink": "Admin area",
     "subtitle": "Presidency Scheduler",
     "language": "Language",
     "state": "State {number}",
@@ -26,6 +29,16 @@
     "TROOPS": "Troops"
   },
   "home": {
+    "welcomeTitle": "Welcome",
+    "welcomeSubtitle": "Pick what you need.",
+    "scheduleCardTitle": "Role Schedule",
+    "scheduleCardDesc": "Book your slot on the 3 SvS days: Construction, Research and Troops.",
+    "wikiCardTitle": "Game Wiki",
+    "wikiCardDesc": "Tips, guides and information about Whiteout Survival.",
+    "howItWorksCardTitle": "How It Works",
+    "howItWorksCardDesc": "Understand the booking rules before you reserve a slot."
+  },
+  "schedule": {
     "title": "Schedule",
     "subtitle": "Choose a day and book your slot.",
     "noEvent": "No active event right now. Contact an admin.",
@@ -33,8 +46,7 @@
     "slotTaken": "Booked",
     "unavailable": "Unavailable",
     "book": "Book",
-    "oneSlotNote": "Each player can only book one slot per day.",
-    "adminLink": "Admin area"
+    "oneSlotNote": "Each player can only book one slot per day."
   },
   "howItWorks": {
     "title": "How it works",
@@ -101,17 +113,20 @@
     "gameId": "ID",
     "playerName": "Name",
     "alliance": "Alliance",
-    "time": "Time"
+    "time": "Time",
+    "manageWiki": "Manage Wiki"
   },
   "admins": {
     "title": "Manage admins",
     "subtitle": "Only super admins can add or remove admins.",
     "usernameLabel": "Username",
     "passwordLabel": "Password (min. 8 characters)",
+    "wikiEditorLabel": "Can also manage the Wiki",
     "addButton": "Add admin",
     "delete": "Remove",
     "deleteConfirm": "Remove this admin?",
     "superAdminBadge": "Super admin",
+    "wikiEditorBadge": "Wiki editor",
     "errors": {
       "invalid_input": "Please check the fields you filled in.",
       "username_taken": "An admin with this username already exists.",
@@ -136,5 +151,43 @@
     "alliance": "Alliance",
     "changes": "What changed",
     "empty": "No entries yet."
+  },
+  "wiki": {
+    "title": "Wiki",
+    "subtitle": "Tips, guides and information about the game.",
+    "categories": "Categories",
+    "noCategories": "No categories yet.",
+    "noArticles": "No articles in this category yet.",
+    "readMore": "Read more",
+    "back": "Back to Wiki",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "updatedAt": "Updated on {date}"
+  },
+  "wikiAdmin": {
+    "title": "Manage Wiki",
+    "categoriesTitle": "Categories",
+    "addCategory": "Add category",
+    "categoryNamePlaceholder": "Category name",
+    "deleteCategoryConfirm": "This deletes the category and every article inside it. Continue?",
+    "articlesTitle": "Articles",
+    "addArticle": "Add article",
+    "articleTitleLabel": "Title",
+    "articleContentLabel": "Content (Markdown)",
+    "articleContentHint": "Supports **bold**, _italic_, \"- \" lists, # headings and [links](url).",
+    "selectCategory": "Category",
+    "selectCategoryPlaceholder": "Choose a category",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteArticleConfirm": "Delete this article?",
+    "empty": "No articles yet.",
+    "noCategorySelected": "Create a category first.",
+    "errors": {
+      "invalid_input": "Please check the fields you filled in.",
+      "not_found": "This article no longer exists.",
+      "generic": "Something went wrong. Please try again."
+    }
   }
 }

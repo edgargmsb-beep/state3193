@@ -11,8 +11,11 @@
     "es": "Español"
   },
   "nav": {
+    "home": "Início",
     "schedule": "Agendar",
+    "wiki": "Wiki",
     "howItWorks": "Como funciona",
+    "adminLink": "Área do Admin",
     "subtitle": "Presidency Scheduler",
     "language": "Idioma",
     "state": "Estado {number}",
@@ -26,6 +29,16 @@
     "TROOPS": "Tropas"
   },
   "home": {
+    "welcomeTitle": "Bem-vindo",
+    "welcomeSubtitle": "Escolha o que você precisa.",
+    "scheduleCardTitle": "Agenda de Cargos",
+    "scheduleCardDesc": "Reserve seu horário nos 3 dias do SvS: Construção, Pesquisa e Tropas.",
+    "wikiCardTitle": "Wiki do Jogo",
+    "wikiCardDesc": "Dicas, guias e informações sobre o Whiteout Survival.",
+    "howItWorksCardTitle": "Como Funciona",
+    "howItWorksCardDesc": "Entenda as regras de agendamento antes de reservar."
+  },
+  "schedule": {
     "title": "Agendar",
     "subtitle": "Escolha um dia e reserve seu horário.",
     "noEvent": "Nenhum evento ativo no momento. Fale com um admin.",
@@ -33,8 +46,7 @@
     "slotTaken": "Reservado",
     "unavailable": "Indisponível",
     "book": "Reservar",
-    "oneSlotNote": "Cada jogador só pode reservar um horário por dia.",
-    "adminLink": "Área do Admin"
+    "oneSlotNote": "Cada jogador só pode reservar um horário por dia."
   },
   "howItWorks": {
     "title": "Como funciona",
@@ -101,17 +113,20 @@
     "gameId": "ID",
     "playerName": "Nome",
     "alliance": "Aliança",
-    "time": "Horário"
+    "time": "Horário",
+    "manageWiki": "Gerenciar Wiki"
   },
   "admins": {
     "title": "Gerenciar administradores",
     "subtitle": "Apenas super admins podem adicionar ou remover administradores.",
     "usernameLabel": "Usuário",
     "passwordLabel": "Senha (mín. 8 caracteres)",
+    "wikiEditorLabel": "Também pode gerenciar a Wiki",
     "addButton": "Adicionar admin",
     "delete": "Remover",
     "deleteConfirm": "Remover este administrador?",
     "superAdminBadge": "Super admin",
+    "wikiEditorBadge": "Editor da Wiki",
     "errors": {
       "invalid_input": "Verifique os campos preenchidos.",
       "username_taken": "Já existe um admin com esse usuário.",
@@ -136,5 +151,43 @@
     "alliance": "Aliança",
     "changes": "O que mudou",
     "empty": "Nenhum registro ainda."
+  },
+  "wiki": {
+    "title": "Wiki",
+    "subtitle": "Dicas, guias e informações sobre o jogo.",
+    "categories": "Categorias",
+    "noCategories": "Nenhuma categoria ainda.",
+    "noArticles": "Nenhum artigo nessa categoria ainda.",
+    "readMore": "Ler mais",
+    "back": "Voltar para a Wiki",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "updatedAt": "Atualizado em {date}"
+  },
+  "wikiAdmin": {
+    "title": "Gerenciar Wiki",
+    "categoriesTitle": "Categorias",
+    "addCategory": "Adicionar categoria",
+    "categoryNamePlaceholder": "Nome da categoria",
+    "deleteCategoryConfirm": "Isso apaga a categoria e todos os artigos dentro dela. Continuar?",
+    "articlesTitle": "Artigos",
+    "addArticle": "Adicionar artigo",
+    "articleTitleLabel": "Título",
+    "articleContentLabel": "Conteúdo (Markdown)",
+    "articleContentHint": "Suporta **negrito**, _itálico_, listas com \"- \", # títulos e [links](url).",
+    "selectCategory": "Categoria",
+    "selectCategoryPlaceholder": "Escolha uma categoria",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "deleteArticleConfirm": "Excluir este artigo?",
+    "empty": "Nenhum artigo ainda.",
+    "noCategorySelected": "Crie uma categoria primeiro.",
+    "errors": {
+      "invalid_input": "Verifique os campos preenchidos.",
+      "not_found": "Esse artigo não existe mais.",
+      "generic": "Algo deu errado. Tente novamente."
+    }
   }
 }

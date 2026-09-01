@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 export function AdminLinkButton() {
-  const t = useTranslations("home");
+  const t = useTranslations("nav");
 
   return (
     <Link

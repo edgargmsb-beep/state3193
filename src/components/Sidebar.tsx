@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, ChevronDown, Info, Menu, Mountain, X } from "lucide-react";
+import { BookOpen, CalendarDays, ChevronDown, Home, Info, Menu, Mountain, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
@@ -22,7 +22,9 @@ export function Sidebar() {
   }, [pathname]);
 
   const navItems = [
-    { href: "/", label: t("schedule"), icon: CalendarDays },
+    { href: "/", label: t("home"), icon: Home },
+    { href: "/schedule", label: t("schedule"), icon: CalendarDays },
+    { href: "/wiki", label: t("wiki"), icon: BookOpen },
     { href: "/how-it-works", label: t("howItWorks"), icon: Info },
   ] as const;
 
@@ -77,7 +79,7 @@ export function Sidebar() {
 
         <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
           {navItems.map(({ href, label, icon: Icon }) => {
-            const active = pathname === href;
+            const active = href === "/" ? pathname === href : pathname.startsWith(href);
             return (
               <Link
                 key={href}

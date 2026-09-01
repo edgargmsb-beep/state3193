@@ -162,6 +162,10 @@
     "back": "Volver a la Wiki",
     "copy": "Copiar",
     "copied": "¡Copiado!",
+    "translate": "Traducir",
+    "viewOriginal": "Ver original",
+    "translating": "Traduciendo...",
+    "translateError": "No se pudo traducir ahora. Inténtalo de nuevo.",
     "updatedAt": "Actualizado el {date}"
   },
   "wikiAdmin": {
@@ -177,6 +181,7 @@
     "articleContentHint": "Admite **negrita**, _cursiva_, listas con \"- \", # títulos y [enlaces](url).",
     "selectCategory": "Categoría",
     "selectCategoryPlaceholder": "Elige una categoría",
+    "articleLanguageLabel": "Idioma del texto",
     "save": "Guardar",
     "cancel": "Cancelar",
     "edit": "Editar",

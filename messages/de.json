@@ -162,6 +162,10 @@
     "back": "Zurück zur Wiki",
     "copy": "Kopieren",
     "copied": "Kopiert!",
+    "translate": "Übersetzen",
+    "viewOriginal": "Original anzeigen",
+    "translating": "Übersetzt...",
+    "translateError": "Konnte gerade nicht übersetzt werden. Bitte versuche es erneut.",
     "updatedAt": "Aktualisiert am {date}"
   },
   "wikiAdmin": {
@@ -177,6 +181,7 @@
     "articleContentHint": "Unterstützt **fett**, _kursiv_, Listen mit \"- \", # Überschriften und [Links](url).",
     "selectCategory": "Kategorie",
     "selectCategoryPlaceholder": "Kategorie auswählen",
+    "articleLanguageLabel": "Sprache des Textes",
     "save": "Speichern",
     "cancel": "Abbrechen",
     "edit": "Bearbeiten",

@@ -68,6 +68,7 @@ export type WikiArticleFull = {
   categoryId: string;
   title: string;
   content: string;
+  language: string;
   createdAt: string;
   updatedAt: string;
   category: { id: string; name: string };
@@ -78,6 +79,7 @@ export type WikiArticleAdmin = {
   categoryId: string;
   title: string;
   content: string;
+  language: string;
   createdAt: string;
   updatedAt: string;
 };

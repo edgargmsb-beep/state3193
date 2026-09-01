@@ -1,7 +1,8 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
+import { routing } from "@/i18n/routing";
 import type { WikiArticleAdmin, WikiCategoryAdmin } from "@/lib/types";
 
 type Props = {
@@ -14,9 +15,12 @@ type Props = {
 
 export function WikiArticleEditor({ categories, article, defaultCategoryId, onCancel, onSaved }: Props) {
   const t = useTranslations("wikiAdmin");
+  const tLang = useTranslations("languages");
+  const currentLocale = useLocale();
   const [categoryId, setCategoryId] = useState(article?.categoryId ?? defaultCategoryId);
   const [title, setTitle] = useState(article?.title ?? "");
   const [content, setContent] = useState(article?.content ?? "");
+  const [language, setLanguage] = useState(article?.language ?? currentLocale);
   const [errorKey, setErrorKey] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -29,7 +33,7 @@ export function WikiArticleEditor({ categories, article, defaultCategoryId, onCa
       const res = await fetch(url, {
         method: article ? "PATCH" : "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ categoryId, title, content }),
+        body: JSON.stringify({ categoryId, title, content, language }),
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
@@ -50,19 +54,35 @@ export function WikiArticleEditor({ categories, article, defaultCategoryId, onCa
         </h2>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">{t("selectCategory")}</label>
-            <select
-              value={categoryId}
-              onChange={(e) => setCategoryId(e.target.value)}
-              className="w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100"
-            >
-              {categories.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
+          <div className="flex gap-3">
+            <div className="flex-1">
+              <label className="mb-1 block text-sm font-medium text-slate-300">{t("selectCategory")}</label>
+              <select
+                value={categoryId}
+                onChange={(e) => setCategoryId(e.target.value)}
+                className="w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100"
+              >
+                {categories.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex-1">
+              <label className="mb-1 block text-sm font-medium text-slate-300">{t("articleLanguageLabel")}</label>
+              <select
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+                className="w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100"
+              >
+                {routing.locales.map((l) => (
+                  <option key={l} value={l}>
+                    {tLang(l)}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <div>

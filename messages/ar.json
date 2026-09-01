@@ -162,6 +162,10 @@
     "back": "العودة إلى الويكي",
     "copy": "نسخ",
     "copied": "تم النسخ!",
+    "translate": "ترجمة",
+    "viewOriginal": "عرض النص الأصلي",
+    "translating": "جارٍ الترجمة...",
+    "translateError": "تعذّرت الترجمة الآن. حاول مرة أخرى.",
     "updatedAt": "تم التحديث في {date}"
   },
   "wikiAdmin": {
@@ -177,6 +181,7 @@
     "articleContentHint": "يدعم **غامق**، _مائل_، قوائم باستخدام \"- \"، # عناوين، و[روابط](url).",
     "selectCategory": "الفئة",
     "selectCategoryPlaceholder": "اختر فئة",
+    "articleLanguageLabel": "لغة النص",
     "save": "حفظ",
     "cancel": "إلغاء",
     "edit": "تعديل",

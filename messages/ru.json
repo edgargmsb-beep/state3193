@@ -162,6 +162,10 @@
     "back": "Назад в Вики",
     "copy": "Копировать",
     "copied": "Скопировано!",
+    "translate": "Перевести",
+    "viewOriginal": "Показать оригинал",
+    "translating": "Перевод...",
+    "translateError": "Не удалось перевести. Попробуйте снова.",
     "updatedAt": "Обновлено {date}"
   },
   "wikiAdmin": {
@@ -177,6 +181,7 @@
     "articleContentHint": "Поддерживает **жирный**, _курсив_, списки с \"- \", # заголовки и [ссылки](url).",
     "selectCategory": "Категория",
     "selectCategoryPlaceholder": "Выберите категорию",
+    "articleLanguageLabel": "Язык текста",
     "save": "Сохранить",
     "cancel": "Отмена",
     "edit": "Изменить",

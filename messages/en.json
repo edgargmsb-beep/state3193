@@ -162,6 +162,10 @@
     "back": "Back to Wiki",
     "copy": "Copy",
     "copied": "Copied!",
+    "translate": "Translate",
+    "viewOriginal": "View original",
+    "translating": "Translating...",
+    "translateError": "Couldn't translate right now. Please try again.",
     "updatedAt": "Updated on {date}"
   },
   "wikiAdmin": {
@@ -177,6 +181,7 @@
     "articleContentHint": "Supports **bold**, _italic_, \"- \" lists, # headings and [links](url).",
     "selectCategory": "Category",
     "selectCategoryPlaceholder": "Choose a category",
+    "articleLanguageLabel": "Text language",
     "save": "Save",
     "cancel": "Cancel",
     "edit": "Edit",

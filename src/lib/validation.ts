@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { DAYS, SLOT_COUNT } from "@/lib/slots";
+import { locales } from "@/i18n/routing";
 
 // IDs de jogador do Whiteout Survival sao numericos, tipicamente com 9 digitos.
 // A faixa 6-10 cobre contas antigas (menos digitos) e crescimento futuro, mas
@@ -70,6 +71,11 @@ export const wikiArticleInputSchema = z.object({
   categoryId: z.string().trim().min(1),
   title: z.string().trim().min(1).max(120),
   content: z.string().trim().min(1).max(20000),
+  language: z.enum(locales),
 });
 
 export type WikiArticleInput = z.infer<typeof wikiArticleInputSchema>;
+
+export const translateArticleInputSchema = z.object({
+  targetLang: z.enum(locales),
+});

@@ -1,0 +1,140 @@
+{
+  "app": {
+    "title": "Horario de Roles SvS"
+  },
+  "languages": {
+    "pt": "Português",
+    "en": "English",
+    "ar": "العربية",
+    "ru": "Русский",
+    "de": "Deutsch",
+    "es": "Español"
+  },
+  "nav": {
+    "schedule": "Agendar",
+    "howItWorks": "Cómo funciona",
+    "subtitle": "Presidency Scheduler",
+    "language": "Idioma",
+    "state": "Estado {number}",
+    "copyright": "© {year} WOS Scheduler. Todos los derechos reservados.",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "days": {
+    "CONSTRUCTION": "Construcción",
+    "RESEARCH": "Investigación",
+    "TROOPS": "Tropas"
+  },
+  "home": {
+    "title": "Agendar",
+    "subtitle": "Elige un día y reserva tu horario.",
+    "noEvent": "No hay ningún evento activo por ahora. Contacta a un admin.",
+    "slotFree": "Libre",
+    "slotTaken": "Reservado",
+    "unavailable": "No disponible",
+    "book": "Reservar",
+    "oneSlotNote": "Cada jugador solo puede reservar un horario por día.",
+    "adminLink": "Área de administración"
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "subtitle": "Entiende las reglas antes de reservar.",
+    "intro": "Durante el SvS (State vs State), la alianza se turna el rol de presidente durante 3 días de preparación. Quien ocupe el rol en el horario reservado recibe el bono correspondiente.",
+    "rulesTitle": "Reglas",
+    "rules": [
+      "Hay 3 días: Construcción, Investigación y Tropas.",
+      "Los horarios van de 00:00 a 23:30, en bloques de 30 minutos, siempre en UTC.",
+      "Cada jugador (identificado por su ID de juego) solo puede reservar 1 horario por día.",
+      "El mismo ID puede reservar horarios en días diferentes, incluso a la misma hora.",
+      "Al final del mes, un admin abre un nuevo evento y el horario se reinicia."
+    ]
+  },
+  "form": {
+    "title": "Reservar horario",
+    "day": "Día",
+    "time": "Hora (UTC)",
+    "gameId": "ID de juego",
+    "gameIdHint": "Solo números (6 a 10 dígitos).",
+    "playerName": "Nombre en el juego",
+    "alliance": "Alianza",
+    "allianceHint": "3 letras (sigla de la alianza).",
+    "submit": "Confirmar reserva",
+    "cancel": "Cancelar",
+    "submitting": "Enviando...",
+    "success": "¡Reservado con éxito!",
+    "allDaysCheckbox": "Reservar este mismo horario ({time}) en los 3 días: Construcción, Investigación y Tropas.",
+    "resultsTitle": "Resultado de la reserva",
+    "close": "Cerrar",
+    "errors": {
+      "invalid_input": "Revisa los campos completados.",
+      "slot_taken": "Ese horario acaba de ser ocupado. Elige otro.",
+      "id_already_booked_today": "Ese ID ya tiene un horario reservado ese día.",
+      "no_active_event": "No hay ningún evento activo por ahora.",
+      "not_found": "Esta reserva ya no existe.",
+      "generic": "Algo salió mal. Inténtalo de nuevo."
+    }
+  },
+  "admin": {
+    "loginTitle": "Inicio de sesión del administrador",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "loginButton": "Entrar",
+    "loginError": "Usuario o contraseña inválidos.",
+    "logout": "Salir",
+    "panelTitle": "Panel de administración",
+    "activeEvent": "Evento activo",
+    "newEvent": "Abrir nuevo mes",
+    "newEventConfirm": "Esto reinicia el horario para un nuevo mes. El mes actual queda guardado en el historial. ¿Continuar?",
+    "history": "Historial de eventos",
+    "reactivate": "Reactivar",
+    "reactivateConfirm": "Esto hace que este mes vuelva a estar activo — los jugadores lo verán y podrán reservar en él de nuevo. El mes que estaba activo deja de estarlo. ¿Continuar?",
+    "copyId": "Copiar ID",
+    "copied": "¡ID copiado!",
+    "copyFreeSlots": "Copiar horarios libres",
+    "copiedFreeSlots": "¡Copiado!",
+    "edit": "Editar",
+    "editBookingTitle": "Editar reserva",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "deleteConfirm": "¿Eliminar esta reserva?",
+    "empty": "Todavía no hay reservas.",
+    "gameId": "ID",
+    "playerName": "Nombre",
+    "alliance": "Alianza",
+    "time": "Hora"
+  },
+  "admins": {
+    "title": "Gestionar administradores",
+    "subtitle": "Solo los super admins pueden agregar o eliminar administradores.",
+    "usernameLabel": "Usuario",
+    "passwordLabel": "Contraseña (mín. 8 caracteres)",
+    "addButton": "Agregar admin",
+    "delete": "Eliminar",
+    "deleteConfirm": "¿Eliminar este administrador?",
+    "superAdminBadge": "Super admin",
+    "errors": {
+      "invalid_input": "Revisa los campos completados.",
+      "username_taken": "Ya existe un admin con ese usuario.",
+      "cannot_delete_self": "No puedes eliminarte a ti mismo.",
+      "last_super_admin": "No se puede eliminar al último super admin.",
+      "generic": "Algo salió mal. Inténtalo de nuevo."
+    }
+  },
+  "auditLog": {
+    "title": "Registro de auditoría",
+    "subtitle": "Historial de reservas eliminadas y editadas por los administradores.",
+    "when": "Cuándo",
+    "admin": "Admin",
+    "action": "Acción",
+    "actionDeleted": "Eliminó la reserva",
+    "actionUpdated": "Editó la reserva",
+    "event": "Evento",
+    "day": "Día",
+    "time": "Hora",
+    "gameId": "ID",
+    "playerName": "Nombre",
+    "alliance": "Alianza",
+    "changes": "Qué cambió",
+    "empty": "Todavía no hay registros."
+  }
+}

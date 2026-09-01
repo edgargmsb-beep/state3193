@@ -53,6 +53,8 @@ export type AuditLogEntry = {
 export type WikiArticleSummary = {
   id: string;
   title: string;
+  content: string;
+  language: string;
   updatedAt: string;
 };
 

@@ -6,7 +6,7 @@ export async function GET() {
     orderBy: { order: "asc" },
     include: {
       articles: {
-        select: { id: true, title: true, updatedAt: true },
+        select: { id: true, title: true, content: true, language: true, updatedAt: true },
         orderBy: { title: "asc" },
       },
     },

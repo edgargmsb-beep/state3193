@@ -1,17 +1,15 @@
 "use client";
 
-import { FileText } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { AdminLinkButton } from "@/components/AdminLinkButton";
+import { WikiArticleCard } from "@/components/WikiArticleCard";
 import type { WikiCategory } from "@/lib/types";
 
 export function WikiBrowser() {
   const t = useTranslations("wiki");
-  const locale = useLocale();
   const [categories, setCategories] = useState<WikiCategory[] | null>(null);
   const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
 
@@ -67,22 +65,11 @@ export function WikiBrowser() {
             )}
 
             {activeCategory && activeCategory.articles.length > 0 && (
-              <ul className="space-y-2">
+              <div className="space-y-4">
                 {activeCategory.articles.map((article) => (
-                  <li key={article.id}>
-                    <Link
-                      href={`/wiki/${article.id}`}
-                      className="flex items-center gap-3 rounded-lg border border-slate-800 bg-slate-900/40 p-4 transition-colors hover:border-blue-600 hover:bg-slate-900"
-                    >
-                      <FileText className="h-5 w-5 shrink-0 text-blue-500" />
-                      <span className="font-medium text-slate-100">{article.title}</span>
-                      <span className="ms-auto shrink-0 text-xs text-slate-500">
-                        {new Intl.DateTimeFormat(locale, { dateStyle: "medium" }).format(new Date(article.updatedAt))}
-                      </span>
-                    </Link>
-                  </li>
+                  <WikiArticleCard key={article.id} article={article} />
                 ))}
-              </ul>
+              </div>
             )}
           </>
         )}

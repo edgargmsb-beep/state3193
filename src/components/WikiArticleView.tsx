@@ -1,26 +1,18 @@
 "use client";
 
-import { ArrowLeft, Copy, Languages } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { ArrowLeft } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { AdminLinkButton } from "@/components/AdminLinkButton";
-import { MarkdownContent } from "@/components/MarkdownContent";
+import { WikiArticleCard } from "@/components/WikiArticleCard";
 import type { WikiArticleFull } from "@/lib/types";
-
-type Translated = { title: string; content: string };
 
 export function WikiArticleView({ articleId }: { articleId: string }) {
   const t = useTranslations("wiki");
-  const locale = useLocale();
   const [article, setArticle] = useState<WikiArticleFull | null | undefined>(undefined);
-  const [copied, setCopied] = useState(false);
-  const [translated, setTranslated] = useState<Translated | null>(null);
-  const [showingTranslation, setShowingTranslation] = useState(false);
-  const [translating, setTranslating] = useState(false);
-  const [translateError, setTranslateError] = useState(false);
 
   useEffect(() => {
     fetch(`/api/wiki/articles/${articleId}`, { cache: "no-store" })
@@ -28,47 +20,10 @@ export function WikiArticleView({ articleId }: { articleId: string }) {
       .then((json: { article: WikiArticleFull } | null) => setArticle(json?.article ?? null));
   }, [articleId]);
 
-  const displayTitle = showingTranslation && translated ? translated.title : article?.title;
-  const displayContent = showingTranslation && translated ? translated.content : article?.content;
-
-  function handleCopy() {
-    if (!displayContent) return;
-    navigator.clipboard.writeText(displayContent);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  }
-
-  async function handleTranslateToggle() {
-    if (translated) {
-      setShowingTranslation((v) => !v);
-      return;
-    }
-    setTranslating(true);
-    setTranslateError(false);
-    try {
-      const res = await fetch(`/api/wiki/articles/${articleId}/translate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ targetLang: locale }),
-      });
-      if (!res.ok) {
-        setTranslateError(true);
-        return;
-      }
-      const json: Translated = await res.json();
-      setTranslated(json);
-      setShowingTranslation(true);
-    } catch {
-      setTranslateError(true);
-    } finally {
-      setTranslating(false);
-    }
-  }
-
   return (
     <div className="flex flex-1 flex-col">
       <PageHeader
-        title={displayTitle ?? t("title")}
+        title={article?.title ?? t("title")}
         subtitle={article?.category.name}
         actions={
           <>
@@ -86,38 +41,7 @@ export function WikiArticleView({ articleId }: { articleId: string }) {
 
         {article === null && <p className="p-8 text-center text-slate-400">{t("noArticles")}</p>}
 
-        {article && (
-          <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-6">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
-              <span className="text-xs text-slate-500">
-                {t("updatedAt", {
-                  date: new Intl.DateTimeFormat(locale, { dateStyle: "medium" }).format(new Date(article.updatedAt)),
-                })}
-              </span>
-              <div className="flex items-center gap-2">
-                {article.language !== locale && (
-                  <button
-                    onClick={handleTranslateToggle}
-                    disabled={translating}
-                    className="inline-flex items-center gap-1.5 rounded-md border border-slate-700 px-3 py-1.5 text-xs font-medium text-slate-300 hover:border-blue-600 hover:text-blue-400 disabled:opacity-60"
-                  >
-                    <Languages className="h-3.5 w-3.5" />
-                    {translating ? t("translating") : showingTranslation ? t("viewOriginal") : t("translate")}
-                  </button>
-                )}
-                <button
-                  onClick={handleCopy}
-                  className="inline-flex items-center gap-1.5 rounded-md border border-slate-700 px-3 py-1.5 text-xs font-medium text-slate-300 hover:border-blue-600 hover:text-blue-400"
-                >
-                  <Copy className="h-3.5 w-3.5" />
-                  {copied ? t("copied") : t("copy")}
-                </button>
-              </div>
-            </div>
-            {translateError && <p className="mb-3 text-sm text-red-400">{t("translateError")}</p>}
-            {displayContent && <MarkdownContent content={displayContent} />}
-          </div>
-        )}
+        {article && <WikiArticleCard article={article} />}
       </div>
     </div>
   );

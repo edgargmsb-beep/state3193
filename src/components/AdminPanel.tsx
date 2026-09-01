@@ -1,6 +1,6 @@
 "use client";
 
-import { ClipboardCopy, Copy, LogOut, RotateCcw, Trash2 } from "lucide-react";
+import { ClipboardCopy, Copy, LogOut, Pencil, RotateCcw, Trash2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 import { adminLogout } from "@/lib/actions";
@@ -13,10 +13,11 @@ import {
   slotToLabel,
   type DayKey,
 } from "@/lib/slots";
-import type { AdminEvent } from "@/lib/types";
+import type { AdminBooking, AdminEvent } from "@/lib/types";
 import { PageHeader } from "@/components/PageHeader";
 import { AdminUsersManager } from "@/components/AdminUsersManager";
 import { AuditLogViewer } from "@/components/AuditLogViewer";
+import { EditBookingModal } from "@/components/EditBookingModal";
 
 function todayIso(offsetDays = 0): string {
   const d = new Date();
@@ -33,6 +34,7 @@ export function AdminPanel({ isSuperAdmin }: { isSuperAdmin: boolean }) {
   const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [copiedFreeSlotsDay, setCopiedFreeSlotsDay] = useState<DayKey | null>(null);
+  const [editingBooking, setEditingBooking] = useState<AdminBooking | null>(null);
   const [newEventDates, setNewEventDates] = useState<Record<DayKey, string>>({
     CONSTRUCTION: todayIso(),
     RESEARCH: todayIso(1),
@@ -224,6 +226,13 @@ export function AdminPanel({ isSuperAdmin }: { isSuperAdmin: boolean }) {
                             {copiedId === booking.gameId ? t("copied") : t("copyId")}
                           </button>
                           <button
+                            onClick={() => setEditingBooking(booking)}
+                            className="mr-3 inline-flex items-center gap-1 text-slate-300 hover:underline"
+                          >
+                            <Pencil className="h-3.5 w-3.5" />
+                            {t("edit")}
+                          </button>
+                          <button
                             onClick={() => handleDelete(booking.id)}
                             className="inline-flex items-center gap-1 text-red-400 hover:underline"
                           >
@@ -242,6 +251,17 @@ export function AdminPanel({ isSuperAdmin }: { isSuperAdmin: boolean }) {
         {isSuperAdmin && <AdminUsersManager />}
         {isSuperAdmin && <AuditLogViewer />}
       </div>
+
+      {editingBooking && (
+        <EditBookingModal
+          booking={editingBooking}
+          onCancel={() => setEditingBooking(null)}
+          onSaved={() => {
+            setEditingBooking(null);
+            load();
+          }}
+        />
+      )}
     </div>
   );
 }

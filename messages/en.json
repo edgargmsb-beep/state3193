@@ -69,6 +69,7 @@
       "slot_taken": "That slot was just taken. Pick another one.",
       "id_already_booked_today": "This ID already has a slot booked on this day.",
       "no_active_event": "There is no active event right now.",
+      "not_found": "This booking no longer exists.",
       "generic": "Something went wrong. Please try again."
     }
   },
@@ -90,6 +91,9 @@
     "copied": "ID copied!",
     "copyFreeSlots": "Copy free slots",
     "copiedFreeSlots": "Copied!",
+    "edit": "Edit",
+    "editBookingTitle": "Edit booking",
+    "save": "Save",
     "delete": "Delete",
     "deleteConfirm": "Remove this booking?",
     "empty": "No bookings yet.",
@@ -117,17 +121,19 @@
   },
   "auditLog": {
     "title": "Audit log",
-    "subtitle": "History of booking deletions made by admins.",
+    "subtitle": "History of booking deletions and edits made by admins.",
     "when": "When",
     "admin": "Admin",
     "action": "Action",
     "actionDeleted": "Deleted booking",
+    "actionUpdated": "Edited booking",
     "event": "Event",
     "day": "Day",
     "time": "Time",
     "gameId": "ID",
     "playerName": "Name",
     "alliance": "Alliance",
+    "changes": "What changed",
     "empty": "No entries yet."
   }
 }

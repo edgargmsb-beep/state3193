@@ -54,15 +54,16 @@ model Admin {
 }
 
 model AuditLog {
-  id            String   @id @default(cuid())
-  action        String
-  adminId       String
-  adminUsername String
-  eventLabel    String
-  day           Day
-  slot          Int
-  gameId        String
-  playerName    String
-  alliance      String
-  createdAt     DateTime @default(now())
+  id             String   @id @default(cuid())
+  action         String
+  adminId        String
+  adminUsername  String
+  eventLabel     String
+  day            Day
+  slot           Int
+  gameId         String
+  playerName     String
+  alliance       String
+  previousValues Json?
+  createdAt      DateTime @default(now())
 }

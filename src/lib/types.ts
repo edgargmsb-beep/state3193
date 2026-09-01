@@ -28,6 +28,14 @@ export type AdminEvent = EventCore & {
   bookings: AdminBooking[];
 };
 
+export type AuditLogPreviousValues = {
+  day: DayKey;
+  slot: number;
+  gameId: string;
+  playerName: string;
+  alliance: string;
+};
+
 export type AuditLogEntry = {
   id: string;
   action: string;
@@ -38,5 +46,6 @@ export type AuditLogEntry = {
   gameId: string;
   playerName: string;
   alliance: string;
+  previousValues: AuditLogPreviousValues | null;
   createdAt: string;
 };

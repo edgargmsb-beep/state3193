@@ -69,6 +69,7 @@
       "slot_taken": "Esse horário acabou de ser ocupado. Escolha outro.",
       "id_already_booked_today": "Esse ID já tem um horário agendado nesse dia.",
       "no_active_event": "Nenhum evento ativo no momento.",
+      "not_found": "Esse agendamento não existe mais.",
       "generic": "Algo deu errado. Tente novamente."
     }
   },
@@ -90,6 +91,9 @@
     "copied": "ID copiado!",
     "copyFreeSlots": "Copiar horários livres",
     "copiedFreeSlots": "Copiado!",
+    "edit": "Editar",
+    "editBookingTitle": "Editar agendamento",
+    "save": "Salvar",
     "delete": "Excluir",
     "deleteConfirm": "Remover este agendamento?",
     "empty": "Nenhum agendamento ainda.",
@@ -117,17 +121,19 @@
   },
   "auditLog": {
     "title": "Registro de auditoria",
-    "subtitle": "Histórico de exclusões de horários feitas pelos admins.",
+    "subtitle": "Histórico de exclusões e edições de horários feitas pelos admins.",
     "when": "Quando",
     "admin": "Admin",
     "action": "Ação",
     "actionDeleted": "Excluiu agendamento",
+    "actionUpdated": "Editou agendamento",
     "event": "Evento",
     "day": "Dia",
     "time": "Horário",
     "gameId": "ID",
     "playerName": "Nome",
     "alliance": "Aliança",
+    "changes": "O que mudou",
     "empty": "Nenhum registro ainda."
   }
 }

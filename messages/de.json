@@ -69,6 +69,7 @@
       "slot_taken": "Dieser Zeitslot wurde gerade vergeben. Wähle einen anderen.",
       "id_already_booked_today": "Diese ID hat an diesem Tag bereits einen Zeitslot gebucht.",
       "no_active_event": "Es gibt derzeit kein aktives Event.",
+      "not_found": "Diese Buchung existiert nicht mehr.",
       "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
     }
   },
@@ -90,6 +91,9 @@
     "copied": "ID kopiert!",
     "copyFreeSlots": "Freie Zeiten kopieren",
     "copiedFreeSlots": "Kopiert!",
+    "edit": "Bearbeiten",
+    "editBookingTitle": "Buchung bearbeiten",
+    "save": "Speichern",
     "delete": "Löschen",
     "deleteConfirm": "Diese Buchung entfernen?",
     "empty": "Noch keine Buchungen.",
@@ -117,17 +121,19 @@
   },
   "auditLog": {
     "title": "Prüfprotokoll",
-    "subtitle": "Verlauf der von Admins gelöschten Buchungen.",
+    "subtitle": "Verlauf der von Admins gelöschten und bearbeiteten Buchungen.",
     "when": "Wann",
     "admin": "Admin",
     "action": "Aktion",
     "actionDeleted": "Buchung gelöscht",
+    "actionUpdated": "Buchung bearbeitet",
     "event": "Event",
     "day": "Tag",
     "time": "Uhrzeit",
     "gameId": "ID",
     "playerName": "Name",
     "alliance": "Allianz",
+    "changes": "Was sich geändert hat",
     "empty": "Noch keine Einträge."
   }
 }

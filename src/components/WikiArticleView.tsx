@@ -24,7 +24,7 @@ export function WikiArticleView({ articleId }: { articleId: string }) {
 
   function handleCopy() {
     if (!article) return;
-    navigator.clipboard.writeText(`${article.title}\n\n${article.content}`);
+    navigator.clipboard.writeText(article.content);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   }

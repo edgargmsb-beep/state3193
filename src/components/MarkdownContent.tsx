@@ -1,11 +1,12 @@
 import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 
 export function MarkdownContent({ content }: { content: string }) {
   return (
     <div className="space-y-3 text-sm leading-relaxed text-slate-300">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkBreaks]}
         components={{
           h1: (props) => <h1 className="mt-6 mb-2 text-xl font-bold text-slate-100 first:mt-0" {...props} />,
           h2: (props) => <h2 className="mt-5 mb-2 text-lg font-bold text-slate-100 first:mt-0" {...props} />,

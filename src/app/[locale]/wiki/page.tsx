@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { WikiBrowser } from "@/components/WikiBrowser";
 import { isWikiEnabled } from "@/lib/settings";
@@ -10,7 +10,7 @@ export default async function WikiPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  if (!(await isWikiEnabled())) notFound();
+  if (!(await isWikiEnabled())) redirect(`/${locale}/schedule`);
 
   return <WikiBrowser />;
 }

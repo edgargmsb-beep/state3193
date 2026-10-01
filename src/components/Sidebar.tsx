@@ -22,7 +22,7 @@ export function Sidebar({ wikiEnabled }: { wikiEnabled: boolean }) {
   }, [pathname]);
 
   const navItems = [
-    { href: "/", label: t("home"), icon: Home },
+    ...(wikiEnabled ? [{ href: "/", label: t("home"), icon: Home }] : []),
     { href: "/schedule", label: t("schedule"), icon: CalendarDays },
     ...(wikiEnabled ? [{ href: "/wiki", label: t("wiki"), icon: BookOpen }] : []),
     { href: "/how-it-works", label: t("howItWorks"), icon: Info },

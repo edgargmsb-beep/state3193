@@ -1,4 +1,5 @@
 import { BookOpen, CalendarDays, Info } from "lucide-react";
+import { redirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/PageHeader";
@@ -13,8 +14,11 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  // With the Wiki off, the home page has nothing but the schedule to offer.
+  if (!(await isWikiEnabled())) {
+    redirect(`/${locale}/schedule`);
+  }
   const t = await getTranslations("home");
-  const wikiEnabled = await isWikiEnabled();
 
   const cards = [
     {
@@ -23,16 +27,12 @@ export default async function HomePage({
       title: t("scheduleCardTitle"),
       description: t("scheduleCardDesc"),
     },
-    ...(wikiEnabled
-      ? [
-          {
-            href: "/wiki" as const,
-            icon: BookOpen,
-            title: t("wikiCardTitle"),
-            description: t("wikiCardDesc"),
-          },
-        ]
-      : []),
+    {
+      href: "/wiki" as const,
+      icon: BookOpen,
+      title: t("wikiCardTitle"),
+      description: t("wikiCardDesc"),
+    },
     {
       href: "/how-it-works" as const,
       icon: Info,
@@ -54,11 +54,7 @@ export default async function HomePage({
         }
       />
 
-      <div
-        className={`mx-auto grid w-full max-w-4xl flex-1 grid-cols-1 gap-4 p-4 sm:p-8 ${
-          wikiEnabled ? "sm:grid-cols-3" : "sm:grid-cols-2"
-        }`}
-      >
+      <div className="mx-auto grid w-full max-w-4xl flex-1 grid-cols-1 gap-4 p-4 sm:grid-cols-3 sm:p-8">
         {cards.map(({ href, icon: Icon, title, description }) => (
           <Link
             key={href}

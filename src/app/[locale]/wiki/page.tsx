@@ -1,5 +1,7 @@
+import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { WikiBrowser } from "@/components/WikiBrowser";
+import { isWikiEnabled } from "@/lib/settings";
 
 export default async function WikiPage({
   params,
@@ -8,6 +10,7 @@ export default async function WikiPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  if (!(await isWikiEnabled())) notFound();
 
   return <WikiBrowser />;
 }

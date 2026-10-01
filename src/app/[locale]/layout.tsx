@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { Sidebar } from "@/components/Sidebar";
+import { isWikiEnabled } from "@/lib/settings";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -44,6 +45,7 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
+  const wikiEnabled = await isWikiEnabled();
   const dir = rtlLocales.includes(locale as Locale) ? "rtl" : "ltr";
 
   return (
@@ -54,7 +56,7 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col bg-[#0b1220] text-slate-100 md:flex-row">
         <NextIntlClientProvider>
-          <Sidebar />
+          <Sidebar wikiEnabled={wikiEnabled} />
           <main className="flex-1 flex flex-col overflow-y-auto">{children}</main>
         </NextIntlClientProvider>
       </body>

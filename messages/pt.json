@@ -114,7 +114,12 @@
     "playerName": "Nome",
     "alliance": "Aliança",
     "time": "Horário",
-    "manageWiki": "Gerenciar Wiki"
+    "manageWiki": "Gerenciar Wiki",
+    "wikiToggleTitle": "Wiki pública",
+    "wikiToggleOnDesc": "Ativada — aparece no menu e na página inicial.",
+    "wikiToggleOffDesc": "Desativada — escondida do site. O conteúdo continua salvo.",
+    "wikiEnableConfirm": "Ativar a Wiki para todos?",
+    "wikiDisableConfirm": "Desativar a Wiki? Ela ficará escondida do site, mas nada será apagado."
   },
   "admins": {
     "title": "Gerenciar administradores",

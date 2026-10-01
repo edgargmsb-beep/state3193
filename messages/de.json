@@ -114,7 +114,12 @@
     "playerName": "Name",
     "alliance": "Allianz",
     "time": "Uhrzeit",
-    "manageWiki": "Wiki verwalten"
+    "manageWiki": "Wiki verwalten",
+    "wikiToggleTitle": "Öffentliches Wiki",
+    "wikiToggleOnDesc": "Aktiviert — wird im Menü und auf der Startseite angezeigt.",
+    "wikiToggleOffDesc": "Deaktiviert — auf der Website ausgeblendet. Inhalte bleiben erhalten.",
+    "wikiEnableConfirm": "Wiki für alle aktivieren?",
+    "wikiDisableConfirm": "Wiki deaktivieren? Es wird ausgeblendet, aber nichts wird gelöscht."
   },
   "admins": {
     "title": "Admins verwalten",

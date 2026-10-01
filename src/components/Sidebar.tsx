@@ -8,7 +8,7 @@ import { routing } from "@/i18n/routing";
 
 const STATE_NUMBER = process.env.NEXT_PUBLIC_STATE_NUMBER;
 
-export function Sidebar() {
+export function Sidebar({ wikiEnabled }: { wikiEnabled: boolean }) {
   const t = useTranslations("nav");
   const tLang = useTranslations("languages");
   const pathname = usePathname();
@@ -24,9 +24,9 @@ export function Sidebar() {
   const navItems = [
     { href: "/", label: t("home"), icon: Home },
     { href: "/schedule", label: t("schedule"), icon: CalendarDays },
-    { href: "/wiki", label: t("wiki"), icon: BookOpen },
+    ...(wikiEnabled ? [{ href: "/wiki", label: t("wiki"), icon: BookOpen }] : []),
     { href: "/how-it-works", label: t("howItWorks"), icon: Info },
-  ] as const;
+  ];
 
   return (
     <>

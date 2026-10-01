@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { AdminLinkButton } from "@/components/AdminLinkButton";
+import { isWikiEnabled } from "@/lib/settings";
 
 export default async function HomePage({
   params,
@@ -13,6 +14,7 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("home");
+  const wikiEnabled = await isWikiEnabled();
 
   const cards = [
     {
@@ -21,12 +23,16 @@ export default async function HomePage({
       title: t("scheduleCardTitle"),
       description: t("scheduleCardDesc"),
     },
-    {
-      href: "/wiki" as const,
-      icon: BookOpen,
-      title: t("wikiCardTitle"),
-      description: t("wikiCardDesc"),
-    },
+    ...(wikiEnabled
+      ? [
+          {
+            href: "/wiki" as const,
+            icon: BookOpen,
+            title: t("wikiCardTitle"),
+            description: t("wikiCardDesc"),
+          },
+        ]
+      : []),
     {
       href: "/how-it-works" as const,
       icon: Info,
@@ -48,7 +54,11 @@ export default async function HomePage({
         }
       />
 
-      <div className="mx-auto grid w-full max-w-4xl flex-1 grid-cols-1 gap-4 p-4 sm:grid-cols-3 sm:p-8">
+      <div
+        className={`mx-auto grid w-full max-w-4xl flex-1 grid-cols-1 gap-4 p-4 sm:p-8 ${
+          wikiEnabled ? "sm:grid-cols-3" : "sm:grid-cols-2"
+        }`}
+      >
         {cards.map(({ href, icon: Icon, title, description }) => (
           <Link
             key={href}

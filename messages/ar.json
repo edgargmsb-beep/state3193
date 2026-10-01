@@ -114,7 +114,12 @@
     "playerName": "الاسم",
     "alliance": "التحالف",
     "time": "الوقت",
-    "manageWiki": "إدارة الويكي"
+    "manageWiki": "إدارة الويكي",
+    "wikiToggleTitle": "الويكي العامة",
+    "wikiToggleOnDesc": "مفعّلة — تظهر في القائمة وفي الصفحة الرئيسية.",
+    "wikiToggleOffDesc": "معطّلة — مخفية من الموقع. المحتوى محفوظ.",
+    "wikiEnableConfirm": "تفعيل الويكي للجميع؟",
+    "wikiDisableConfirm": "تعطيل الويكي؟ ستُخفى من الموقع لكن لن يُحذف أي شيء."
   },
   "admins": {
     "title": "إدارة المسؤولين",

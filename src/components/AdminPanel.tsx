@@ -3,7 +3,7 @@
 import { BookOpen, ClipboardCopy, Copy, LogOut, Pencil, RotateCcw, Trash2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { adminLogout } from "@/lib/actions";
 import {
   DAYS,
@@ -42,7 +42,10 @@ export function AdminPanel({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [copiedFreeSlotsDay, setCopiedFreeSlotsDay] = useState<DayKey | null>(null);
   const [editingBooking, setEditingBooking] = useState<AdminBooking | null>(null);
-  const [newEventDates, setNewEventDates] = useState<Record<DayKey, string>>({
+  const [wikiEnabled, setWikiEnabled] = useState<boolean | null>(null);
+  const [savingWiki, setSavingWiki] = useState(false);
+  const router = useRouter();
+  const [newEventDates,setNewEventDates] = useState<Record<DayKey, string>>({
     CONSTRUCTION: todayIso(),
     RESEARCH: todayIso(1),
     TROOPS: todayIso(2),
@@ -59,6 +62,32 @@ export function AdminPanel({
   useEffect(() => {
     load();
   }, [load]);
+
+  useEffect(() => {
+    if (!isSuperAdmin) return;
+    fetch("/api/admin/settings", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json: { wikiEnabled: boolean } | null) => {
+        if (json) setWikiEnabled(json.wikiEnabled);
+      });
+  }, [isSuperAdmin]);
+
+  async function handleToggleWiki() {
+    if (wikiEnabled === null) return;
+    const next = !wikiEnabled;
+    if (!confirm(next ? t("wikiEnableConfirm") : t("wikiDisableConfirm"))) return;
+    setSavingWiki(true);
+    const res = await fetch("/api/admin/settings", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ wikiEnabled: next }),
+    });
+    setSavingWiki(false);
+    if (!res.ok) return;
+    const json: { wikiEnabled: boolean } = await res.json();
+    setWikiEnabled(json.wikiEnabled);
+    router.refresh();
+  }
 
   async function handleDelete(bookingId: string) {
     if (!confirm(t("deleteConfirm"))) return;
@@ -145,6 +174,36 @@ export function AdminPanel({
       />
 
       <div className="mx-auto w-full max-w-4xl flex-1 p-4 sm:p-8">
+        {isSuperAdmin && wikiEnabled !== null && (
+          <div className="mb-4 flex items-center justify-between gap-4 rounded-lg border border-slate-800 bg-slate-900/40 p-4">
+            <div className="flex items-center gap-3">
+              <BookOpen className="h-5 w-5 shrink-0 text-blue-500" />
+              <div>
+                <p className="text-sm font-medium text-slate-200">{t("wikiToggleTitle")}</p>
+                <p className="text-xs text-slate-400">
+                  {wikiEnabled ? t("wikiToggleOnDesc") : t("wikiToggleOffDesc")}
+                </p>
+              </div>
+            </div>
+            <button
+              role="switch"
+              aria-checked={wikiEnabled}
+              aria-label={t("wikiToggleTitle")}
+              onClick={handleToggleWiki}
+              disabled={savingWiki}
+              className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors disabled:opacity-50 ${
+                wikiEnabled ? "bg-blue-600" : "bg-slate-700"
+              }`}
+            >
+              <span
+                className={`inline-block h-5 w-5 rounded-full bg-white transition-transform ${
+                  wikiEnabled ? "translate-x-5 rtl:-translate-x-5" : "translate-x-0.5 rtl:-translate-x-0.5"
+                }`}
+              />
+            </button>
+          </div>
+        )}
+
         <div className="mb-8 flex flex-col gap-4 rounded-lg border border-slate-800 bg-slate-900/40 p-4 sm:flex-row sm:flex-wrap sm:items-end sm:gap-3">
           <div>
             <label className="mb-1 block text-xs font-medium text-slate-400">

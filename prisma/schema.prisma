@@ -87,3 +87,8 @@ model AuditLog {
   previousValues Json?
   createdAt      DateTime @default(now())
 }
+
+model SiteSettings {
+  id          Int     @id @default(1)
+  wikiEnabled Boolean @default(true)
+}

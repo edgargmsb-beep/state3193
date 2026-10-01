@@ -114,7 +114,12 @@
     "playerName": "Name",
     "alliance": "Alliance",
     "time": "Time",
-    "manageWiki": "Manage Wiki"
+    "manageWiki": "Manage Wiki",
+    "wikiToggleTitle": "Public Wiki",
+    "wikiToggleOnDesc": "Enabled — shown in the menu and on the home page.",
+    "wikiToggleOffDesc": "Disabled — hidden from the site. Content is kept.",
+    "wikiEnableConfirm": "Enable the Wiki for everyone?",
+    "wikiDisableConfirm": "Disable the Wiki? It will be hidden from the site, but nothing will be deleted."
   },
   "admins": {
     "title": "Manage admins",
